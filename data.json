@@ -1,0 +1,63 @@
+// This is a condensed representation of the data acquired from the api call
+ 
+{
+    "bracketPullers": [
+        {
+            "arm": "RIGHT",
+            "weight": "242+",
+            "division": "OPEN",
+            "pullerModels": [
+                {
+                    "id": 6383416,
+                    "firstName": "JOHN",
+                    "lastName": "BRZENK",
+                    "elo": 1892.577003,
+                    "dayOfMatch": "2022-07-09T00:00:00"
+                },
+                {
+                    "id": 6385967,
+                    "firstName": "WAYNE",
+                    "lastName": "WITHERS",
+                    "elo": 1882.459061,
+                    "dayOfMatch": "2023-12-09T00:00:00"
+                },
+                {
+                    "id": 6387795,
+                    "firstName": "COREY",
+                    "lastName": "WEST",
+                    "elo": 1875.762866,
+                    "dayOfMatch": "2023-11-07T00:00:00"
+                }
+            ]
+        },
+        {
+            "arm": "RIGHT",
+            "weight": "242",
+            "division": "OPEN",
+            "pullerModels": [
+                {
+                    "id": 6387432,
+                    "firstName": "PAVLO",
+                    "lastName": "DERBEDYENYEV",
+                    "elo": 1943.333822,
+                    "dayOfMatch": "2023-04-29T00:00:00"
+                },
+                {
+                    "id": 6383416,
+                    "firstName": "JOHN",
+                    "lastName": "BRZENK",
+                    "elo": 1891.708824,
+                    "dayOfMatch": "2022-04-30T00:00:00"
+                },
+                {
+                    "id": 6384179,
+                    "firstName": "BRENT",
+                    "lastName": "RAKERS",
+                    "elo": 1857.4815,
+                    "dayOfMatch": "2023-12-02T00:00:00"
+                }
+            ]
+        }
+    ]
+}
+       
