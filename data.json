@@ -61,3 +61,184 @@
     ]
 }
        
+
+here is what is returned from axios with response.data:
+
+{
+    bracketPullers: [
+      {
+        arm: 'RIGHT',
+        weight: '231+',
+        division: 'OPEN',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'RIGHT',
+        weight: '231',
+        division: 'OPEN',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'RIGHT',
+        weight: '209',
+        division: 'OPEN',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'RIGHT',
+        weight: '189',
+        division: 'OPEN',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'RIGHT',
+        weight: '172',
+        division: 'OPEN',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'RIGHT',
+        weight: '154',
+        division: 'OPEN',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'RIGHT',
+        weight: '138',
+        division: 'OPEN',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'RIGHT',
+        weight: '125',
+        division: 'OPEN',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'LEFT',
+        weight: '231+',
+        division: 'OPEN',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'LEFT',
+        weight: '231',
+        division: 'OPEN',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'LEFT',
+        weight: '209',
+        division: 'OPEN',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'LEFT',
+        weight: '189',
+        division: 'OPEN',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'LEFT',
+        weight: '172',
+        division: 'OPEN',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'LEFT',
+        weight: '154',
+        division: 'OPEN',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'LEFT',
+        weight: '138',
+        division: 'OPEN',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'LEFT',
+        weight: '125',
+        division: 'OPEN',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'RIGHT',
+        weight: '172+',
+        division: 'LADIES',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'RIGHT',
+        weight: '171',
+        division: 'LADIES',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'RIGHT',
+        weight: '154',
+        division: 'LADIES',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'RIGHT',
+        weight: '138',
+        division: 'LADIES',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'RIGHT',
+        weight: '125',
+        division: 'LADIES',
+        pullerModels: []
+      },
+      {
+        arm: 'RIGHT',
+        weight: '114',
+        division: 'LADIES',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'LEFT',
+        weight: '172+',
+        division: 'LADIES',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'LEFT',
+        weight: '171',
+        division: 'LADIES',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'LEFT',
+        weight: '154',
+        division: 'LADIES',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'LEFT',
+        weight: '138',
+        division: 'LADIES',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'LEFT',
+        weight: '125',
+        division: 'LADIES',
+        pullerModels: []
+      },
+      {
+        arm: 'LEFT',
+        weight: '999',
+        division: 'YOUTH',
+        pullerModels: [Array]
+      },
+      {
+        arm: 'RIGHT',
+        weight: '999',
+        division: 'YOUTH',
+        pullerModels: [Array]
+      }
+    ]
+  }
