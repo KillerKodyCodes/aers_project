@@ -1,12 +1,15 @@
 {
   "name": "aers_project",
   "version": "1.0.0",
-  "description": "a project to interact with AERS data using firebase",
-  "main": "index.js",
+  "description": "a project to interact with AERS data using mysql and typescript",
+  "main": "index.ts",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js"
+    "startLegacy": "node src/index.js",
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "start": "node build/index.js"
   },
   "author": "Kody Byrd",
   "license": "ISC",
@@ -15,6 +18,11 @@
     "firebase-admin": "^12.0.0",
     "firebase-tools": "^13.0.2",
     "mysql": "^2.18.1",
-    "mysql2": "^3.6.5"
+    "mysql2": "^3.6.5",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "ts-node": "^10.9.2"
   }
 }
