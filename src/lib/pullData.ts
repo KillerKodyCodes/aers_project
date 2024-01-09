@@ -1,5 +1,7 @@
 import axios from "axios";
 import { BracketPuller, Division, PullerModel, pullerRecord } from "./interfaces.js";
+import { fstat, writeFileSync } from "fs";
+import { writeFile } from "fs/promises";
 
 //this function will need to pull data from AERS' api https://aersarm.com/api/Elosnapshot/GetCombinedResults/?weightClassType=WAF
 export async function pullData(weightClassType: 'WAF' | 'IFA') {
@@ -46,6 +48,13 @@ export async function pullData(weightClassType: 'WAF' | 'IFA') {
                 console.log('Puller object is undefined for: ', division);
             }
         });
+
+        
+        const jsonData = JSON.stringify(pullerRecords, null,1);
+        
+        const outFile = 'pullerRecords.json';
+        
+        await writeFile(outFile, jsonData);
 
         return pullerRecords;
     } catch (error) {

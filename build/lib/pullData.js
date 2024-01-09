@@ -1,4 +1,5 @@
 import axios from "axios";
+import { writeFile } from "fs/promises";
 //this function will need to pull data from AERS' api https://aersarm.com/api/Elosnapshot/GetCombinedResults/?weightClassType=WAF
 export async function pullData(weightClassType) {
     const apiUrl = `https://aersarm.com/api/Elosnapshot/GetCombinedResults/?weightClassType=${weightClassType}`;
@@ -39,6 +40,9 @@ export async function pullData(weightClassType) {
                 console.log('Puller object is undefined for: ', division);
             }
         });
+        const jsonData = JSON.stringify(pullerRecords, null, 1);
+        const outFile = 'pullerRecords.json';
+        await writeFile(outFile, jsonData);
         return pullerRecords;
     }
     catch (error) {
