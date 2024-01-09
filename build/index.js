@@ -1,6 +1,5 @@
 import * as mysql from 'mysql2/promise';
-import { pullData } from './lib/pullData.js';
-import { readFile } from 'fs/promises';
+import { syncData } from './lib/syncData.js';
 async function main() {
     const connection = await mysql.createConnection({
         host: 'localhost',
@@ -10,59 +9,10 @@ async function main() {
         database: 'AERS_DATA',
         connectTimeout: 60000 * 60
     });
-    //use this flag to switch the actual API call
-    let pullerRecords;
-    const pullDataFlag = false;
-    if (pullDataFlag) {
-        pullerRecords = await pullData('IFA');
-        // console.log(pullerRecords[0]);
-    }
-    else {
-        //use data from output.json instead
-        const infile = "pullerRecords.json";
-        const fileContent = await readFile(infile, 'utf-8');
-        pullerRecords = JSON.parse(fileContent);
-        // console.log(pullerRecords[0]);
-    }
-    console.log(pullerRecords.length);
-    // Prepare the INSERT statement outside the loop
-    const insertStatement = await connection.prepare(`
-            INSERT INTO PULLER_RECORDS(
-                AERSID,
-                FIRSTNAME,
-                LASTNAME,
-                ELO,
-                LASTMATCH,
-                ARM,
-                WEIGHT,
-                DIVISION,
-                LEAGUE
-            ) VALUES (
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?
-            )
-        `);
-    // Use Promise.all to wait for all INSERT queries to finish
-    await Promise.all(pullerRecords.map(async (puller) => {
-        await insertStatement.execute([
-            puller.AERSID,
-            puller.FIRSTNAME,
-            puller.LASTNAME,
-            puller.ELO,
-            puller.LASTMATCH,
-            puller.ARM,
-            puller.WEIGHT,
-            puller.DIVISION,
-            puller.LEAGUE
-        ]);
-    }));
+    //IFA sync
+    // syncData('aers', 'IFA', connection);
+    //WAF sync
+    await syncData('aers', 'WAF', connection);
     connection.end(function (err) {
         console.log('connection ended');
         if (err) {
