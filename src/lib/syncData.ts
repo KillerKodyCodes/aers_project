@@ -4,11 +4,13 @@ import * as mysql from 'mysql2/promise';
 import { pullData } from './pullData.js';
 import { readFile } from 'fs/promises';
 import { pullerRecord } from './interfaces.js';
+import * as dotenv from 'dotenv'
+
+dotenv.config();
+
+export async function syncData(syncSource: 'aers' | 'local', league: 'WAF' | 'IFA', projectAlias: 'prod' | 'test') {
 
 
-export async function syncData(syncSource: 'aers' | 'local', league: 'WAF' | 'IFA', connection: mysql.Connection) {
-
-    //use this flag to switch the actual API call
     let pullerRecords: pullerRecord[];
 
     if (syncSource == 'aers') {
@@ -26,13 +28,35 @@ export async function syncData(syncSource: 'aers' | 'local', league: 'WAF' | 'IF
 
     console.log('Total records to insert: ', pullerRecords.length);
 
-    //TODO:
-    //consider keeping the last synced pullerRecords.json on hand to compare a new sync to
-    //may be faster to compare at this level, then only INSERT pullerRecords that didn't exist before
-    //and UPDATE already existing records with a different ELO than before
-    //and leave the rest alone. 
-    //appears that the connection speed to HOSTINGER just insn't that great, and I should send as little data as possible
+    let dbConfig;
+    if (projectAlias == 'prod') {
+        dbConfig = {
+            host: process.env.PROD_DB_HOST,
+            user: process.env.PROD_DB_USER,
+            port: parseInt(process.env.PROD_DB_PORT, 10),
+            password: process.env.PROD_DB_PASSWORD,
+            database: process.env.PROD_DB_DATABASE,
+            connectTimeout: parseInt(process.env.PROD_DB_CONNECT_TIMEOUT, 10),
+        };
+    }else if(projectAlias == 'test') {
+        dbConfig = {
+            host: process.env.TEST_DB_HOST,
+            user: process.env.TEST_DB_USER,
+            port: parseInt(process.env.TEST_DB_PORT, 10),
+            password: process.env.TEST_DB_PASSWORD,
+            database: process.env.TEST_DB_DATABASE,
+            connectTimeout: parseInt(process.env.TEST_DB_CONNECT_TIMEOUT, 10),
+        };
+    }else{
+        console.log('Invalid project alias: ', projectAlias);
+        return;
+    }
+
+
     
+    //open our connection to begin queries
+    const connection = await mysql.createConnection(dbConfig);
+
     // Prepare the INSERT statement outside the loop
     const insertStatement = await connection.prepare(`
         INSERT INTO PULLER_RECORDS(
@@ -87,5 +111,11 @@ export async function syncData(syncSource: 'aers' | 'local', league: 'WAF' | 'IF
         })
     );
 
+    connection.end(function(err:Error){
+        console.log('connection ended');
+        if(err){
+            console.error(err);
+        }
+    })
 
 }
