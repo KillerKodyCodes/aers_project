@@ -11,17 +11,10 @@ export async function pullData(weightClassType) {
         const pullerRecords = [];
         //iterate through the object and push a pullerRecord to pullerRecords[]
         divisions.forEach(div => {
-            let arm = div.arm;
             let division = div.division;
-            let weight = div.weight;
             let pullerModels = div.pullerModels;
             if (pullerModels) {
                 pullerModels.forEach(puller => {
-                    let id = puller.id;
-                    let firstName = puller.firstName;
-                    let lastName = puller.lastName;
-                    let elo = puller.elo;
-                    let dayOfMatch = puller.dayOfMatch;
                     let pullerRecord = {
                         AERSID: puller.id,
                         FIRSTNAME: puller.firstName,

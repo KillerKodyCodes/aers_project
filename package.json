@@ -5,19 +5,16 @@
   "main": "index.ts",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "startLegacy": "node src/index.js",
     "dev": "tsc --watch",
     "build": "tsc",
-    "start": "node build/index.js"
+    "startprod": "node build/index.js --PROD",
+    "starttest": "node build/index.js --TEST"
   },
   "author": "Kody Byrd",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.5",
-    "firebase": "^10.7.1",
-    "firebase-admin": "^12.0.0",
-    "firebase-tools": "^13.0.2",
+    "dotenv": "^16.4.1",
     "mysql": "^2.18.1",
     "mysql2": "^3.6.5",
     "typescript": "^5.3.3"

@@ -1,3 +1,4 @@
+//This function is intended to seed an empty database. Use syncData() in order to update a database. 
 import { pullData } from './pullData.js';
 import { readFile } from 'fs/promises';
 export async function syncData(syncSource, league, connection) {
@@ -18,6 +19,7 @@ export async function syncData(syncSource, league, connection) {
     // Prepare the INSERT statement outside the loop
     const insertStatement = await connection.prepare(`
                 INSERT INTO PULLER_RECORDS(
+                    ID,
                     AERSID,
                     FIRSTNAME,
                     LASTNAME,
@@ -36,12 +38,23 @@ export async function syncData(syncSource, league, connection) {
                     ?,
                     ?,
                     ?,
+                    ?,
                     ?
-                )
+                ) ON DUPLICATE KEY UPDATE
+                    AERSID = VALUES(AERSID),
+                    FIRSTNAME = VALUES(FIRSTNAME),
+                    LASTNAME = VALUES(LASTNAME),
+                    ELO = VALUES(ELO),
+                    LASTMATCH = VALUES(LASTMATCH),
+                    ARM = VALUES(ARM),
+                    WEIGHT = VALUES(WEIGHT),
+                    DIVISION = VALUES(DIVISION),
+                    LEAGUE = VALUES(LEAGUE)
             `);
     // Use Promise.all to wait for all INSERT queries to finish
     await Promise.all(pullerRecords.map(async (puller) => {
         await insertStatement.execute([
+            (puller.AERSID + puller.ARM + puller.WEIGHT + puller.DIVISION),
             puller.AERSID,
             puller.FIRSTNAME,
             puller.LASTNAME,
