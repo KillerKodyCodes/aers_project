@@ -1,5 +1,6 @@
 node_modules
 serviceAccountKey.json
+build
 test.sql
 pullerRecords.json
 .env
