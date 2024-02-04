@@ -1,6 +1,0 @@
-This is the Request URL for WAF classes: https://aersarm.com/api/Elosnapshot/GetCombinedResults/?weightClassType=WAF
-This is the Request URL for IFA classes: https://aersarm.com/api/Elosnapshot/GetCombinedResults/?weightClassType=IFA
-
-
-So the api address I need to GET from is https://aersarm.com/api/Elosnapshot/GetCombinedResults/?weightClassType with the class Type passed at the end
-
