@@ -31,42 +31,9 @@ async function main(projectAlias: 'test' | 'prod'){
 
     const connection = await mysql.createConnection(dbConfig);
 
-
-    // const connection = await mysql.createConnection({
-    //     host: 'localhost',
-    //     user: 'kbuser',
-    //     port: 3306,
-    //     password: 'password',
-    //     database: 'AERS_DATA',
-    //     connectTimeout: 60000 * 60
-    // });
-
-    // const connection = await mysql.createConnection({
-    //     host: '191.101.79.205',
-    //     user: 'u258074489_kbuser',
-    //     port: 3306,
-    //     password: '120700!Lmao',
-    //     database: 'u258074489_AERSDATA',
-    //     connectTimeout: 60000 * 60
-    // })
-
-    // const connection = await mysql.createConnection({
-    //     host: process.env.DB_HOST || 'localhost',
-    //     user: process.env.DB_USER || 'default_user',
-    //     port: parseInt(process.env.DB_PORT, 10) || 3306,
-    //     password: process.env.DB_PASSWORD || 'default_password',
-    //     database: process.env.DB_DATABASE || 'default_database',
-    //     connectTimeout: parseInt(process.env.DB_CONNECT_TIMEOUT, 10) || 60000 * 60,
-    // });
-
-
     //WAF sync
     console.log('Starting sync on ', projectAlias, ' database.');
     await syncData('local', 'WAF', connection);
-
-
-
-
     
     connection.end(function(err:Error){
         console.log('connection ended');
@@ -77,7 +44,7 @@ async function main(projectAlias: 'test' | 'prod'){
     
 }
 
-// Parse command line arguments to determine the mode
+// Parse command line arguments to determine the alias
 const args = process.argv.slice(2);
 if(args.includes('--TEST')){
     main('test');
