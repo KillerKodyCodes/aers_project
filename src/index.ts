@@ -9,6 +9,7 @@ async function main(projectAlias: 'test' | 'prod'){
     var dbConfig;
     if (projectAlias == 'prod') {
         dbConfig = {
+            host: process.env.PROD_DB_HOST,
             user: process.env.PROD_DB_USER,
             port: parseInt(process.env.PROD_DB_PORT, 10),
             password: process.env.PROD_DB_PASSWORD,
