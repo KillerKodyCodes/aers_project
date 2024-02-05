@@ -1,5 +1,9 @@
 # AERS Web Application Project
 
+
+## Developer notes
+
+Currently, the sync process of pushing data up to an empty mySQL database takes about 3 minutes for almost 21000 records. In the future I would like to add the functionality of filtering out old data before sending to the database. This would make syncs alot faster, but for now the 3 minute process is ok since this only needs to happen once a week at most. 
 ## Overview
 
 This project is designed to create a front-end web application utilizing the AERS (Armwrestling Elo Ratings System) database. The AERS database contains elo scores and armwrestler names, providing valuable data for armwrestling enthusiasts. The application fetches data from AERS' API, inserts it into a MySQL database, and then references this database for real-time information.
