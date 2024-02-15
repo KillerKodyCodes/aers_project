@@ -9,7 +9,7 @@ CREATE TABLE MS_PULLERS(
     MS_RANKLEFT INT,
     CITY VARCHAR(255),
     primary key(ID)
-);3
+);
 
 
 
